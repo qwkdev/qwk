@@ -1,0 +1,291 @@
+{
+    "year": 2024,
+    "data": [
+        {
+            "name": "Teachers return (In-service day)",
+            "time": [
+                1691971200.0,
+                1692057599.0
+            ],
+            "date": [
+                "Monday 14th August",
+                "Monday 14th August"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1692057600.0,
+                1692143999.0
+            ],
+            "date": [
+                "Tuesday 15th August",
+                "Tuesday 15th August"
+            ]
+        },
+        {
+            "name": "September weekend",
+            "time": [
+                1695340800.0,
+                1695686399.0
+            ],
+            "date": [
+                "Friday 22nd September",
+                "Monday 25th September"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1697155200.0,
+                1697241599.0
+            ],
+            "date": [
+                "Friday 13th October",
+                "Friday 13th October"
+            ]
+        },
+        {
+            "name": "October break",
+            "time": [
+                1697414400.0,
+                1697846399.0
+            ],
+            "date": [
+                "Monday 16th October",
+                "Friday 20th October"
+            ]
+        },
+        {
+            "name": "Christmas and New Year",
+            "time": [
+                1703462400.0,
+                1704499199.0
+            ],
+            "date": [
+                "Monday 25th December",
+                "Friday 5th January"
+            ]
+        },
+        {
+            "name": "February break",
+            "time": [
+                1707696000.0,
+                1707868799.0
+            ],
+            "date": [
+                "Monday 12th February",
+                "Tuesday 13th February"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1707868800.0,
+                1707955199.0
+            ],
+            "date": [
+                "Wednesday 14th February",
+                "Wednesday 14th February"
+            ]
+        },
+        {
+            "name": "School Closed (Easter break)",
+            "time": [
+                1711670400.0,
+                1712966399.0
+            ],
+            "date": [
+                "Friday 29th March",
+                "Friday 12th April"
+            ]
+        },
+        {
+            "name": "In-service day (May be subject to change)",
+            "time": [
+                1714608000.0,
+                1714694399.0
+            ],
+            "date": [
+                "Thursday 2nd May",
+                "Thursday 2nd May"
+            ]
+        },
+        {
+            "name": "May Day (closed)",
+            "time": [
+                1714953600.0,
+                1715039999.0
+            ],
+            "date": [
+                "Monday 6th May",
+                "Monday 6th May"
+            ]
+        },
+        {
+            "name": "May weekend",
+            "time": [
+                1716508800.0,
+                1716854399.0
+            ],
+            "date": [
+                "Friday 24th May",
+                "Monday 27th May"
+            ]
+        },
+        {
+            "name": "Summer Holidays",
+            "time": [
+                1719446400.0,
+                1723593599.0
+            ],
+            "date": [
+                "Thursday 27th June",
+                "Tuesday 13th August"
+            ]
+        },
+        {
+            "name": "Teachers return (In-service day)",
+            "time": [
+                1723420800.0,
+                1723507199.0
+            ],
+            "date": [
+                "Monday 12th August",
+                "Monday 12th August"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1723507200.0,
+                1723593599.0
+            ],
+            "date": [
+                "Tuesday 13th August",
+                "Tuesday 13th August"
+            ]
+        },
+        {
+            "name": "September weekend",
+            "time": [
+                1727395200.0,
+                1727740799.0
+            ],
+            "date": [
+                "Friday 27th September",
+                "Monday 30th September"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1728604800.0,
+                1728691199.0
+            ],
+            "date": [
+                "Friday 11th October",
+                "Friday 11th October"
+            ]
+        },
+        {
+            "name": "October break",
+            "time": [
+                1728864000.0,
+                1729295999.0
+            ],
+            "date": [
+                "Monday 14th October",
+                "Friday 18th October"
+            ]
+        },
+        {
+            "name": "Christmas and New Year",
+            "time": [
+                1734912000.0,
+                1735948799.0
+            ],
+            "date": [
+                "Monday 23rd December",
+                "Friday 3rd January"
+            ]
+        },
+        {
+            "name": "February break",
+            "time": [
+                1739750400.0,
+                1739923199.0
+            ],
+            "date": [
+                "Monday 17th February",
+                "Tuesday 18th February"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1739923200.0,
+                1740009599.0
+            ],
+            "date": [
+                "Wednesday 19th February",
+                "Wednesday 19th February"
+            ]
+        },
+        {
+            "name": "Easter Break",
+            "time": [
+                1743984000.0,
+                1745279999.0
+            ],
+            "date": [
+                "Monday 7th April",
+                "Monday 21st April"
+            ]
+        },
+        {
+            "name": "Pupil and Teachers Return",
+            "time": [
+                1745280000.0,
+                1745366399.0
+            ],
+            "date": [
+                "Tuesday 22nd April",
+                "Tuesday 22nd April"
+            ]
+        },
+        {
+            "name": "May Day (closed)",
+            "time": [
+                1746403200.0,
+                1746489599.0
+            ],
+            "date": [
+                "Monday 5th May",
+                "Monday 5th May"
+            ]
+        },
+        {
+            "name": "In-service day",
+            "time": [
+                1746489600.0,
+                1746575999.0
+            ],
+            "date": [
+                "Tuesday 6th May",
+                "Tuesday 6th May"
+            ]
+        },
+        {
+            "name": "May weekend",
+            "time": [
+                1747958400.0,
+                1748303999.0
+            ],
+            "date": [
+                "Friday 23rd May",
+                "Monday 26th May"
+            ]
+        }
+    ]
+}
