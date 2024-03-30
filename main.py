@@ -10,7 +10,8 @@ from datetime import datetime, timezone
 import freecurrencyapi
 
 app = Flask('QWK')
-app.secret_key = os.environ.get('app')
+
+app.secret_key = os.environ['app']
 
 links = {
 	'_': 'https://qwkdev.github.io/',
@@ -35,34 +36,32 @@ def landing():
 
 @app.route('/l')
 def l_view():
-	resp = "// | I{} | L{} | V{} |".format(' '*((int(len(max(links, key=len))))-1), ' '*((len(max([i for i in list(links.values())], key=len)))-1), ' '*((len(max([str(i) for i in visits], key=len)))-1))
+	resp = "| I{} | L{} | V{} |<br>".format(' '*((int(len(max(links, key=len))))-1), ' '*((len(max([i for i in list(links.values())], key=len)))-1), ' '*((len(max([str(i) for i in visits], key=len)))-1))
 	for i in links:
-		resp += "// | {}{} | {}{} | {}{} |".format(i, ' '*((int(len(max(links, key=len))))-len(i)), links[i], ' '*((len(max(list(links.values()), key=len)))-len(links[i])), visits[ltv[i]], ' '*((len(max([str(v) for v in visits], key=len)))-len(str(visits[ltv[i]]))))
+		resp += "| {}{} | {}{} | {}{} |<br>".format(i, ' '*((int(len(max(links, key=len))))-len(i)), links[i], ' '*((len(max(list(links.values()), key=len)))-len(links[i])), visits[ltv[i]], ' '*((len(max([str(v) for v in visits], key=len)))-len(str(visits[ltv[i]]))))
 	return f'<body style="margin: 0; color: #ffffff; background: #000000; font-family: monospace; font-size: 4vh;">{resp}</body>'
 		
 
 @app.route('/l/<n>', methods=['GET'])
-def l(n='nogameshere'):
+def l(n='_'):
 	global visits
 	visits[ltv[n]] += 1
 	rq.get('http://xdroid.net/api/message', params={
-		'k': os.environ.get('XDROID'),
-		't': '{}'.format(n.upper()),
-		'c': '{}'.format(visits[ltv[n]]),
-		'u': 'https://qwk.glitch.me/l/v/{}'.format(n)
+		'k': os.environ['XDROID'],
+		't': f'{n.upper()}',
+		'c': f'{visits[ltv[n]]}',
+		'u': f'https://;url;/l/v/{n}'
 	})
-	save()
+	savev()
 	return redirect(links[n])
 
 @app.route('/l/v/<n>')
 def l_v(n):
-	return '<body style="background:#080808;color:white;font-family:monospace"><h1>Link: <a href="https://qwk.glitch.me/l/{}">qwk.glitch.me/l/{}</a><br>URL: <a href="{}">{}</a><br>Visits: {}</h1>'.format(n, n, links[n], links[n], visits[ltv[n]])
+	return '<body style="background:#080808;color:white;font-family:monospace"><h1>Link: <a href="https://;url;/l/{}">;url;/l/{}</a><br>URL: <a href="{}">{}</a><br>Visits: {}</h1>'.format(n, n, links[n], links[n], visits[ltv[n]])
 
-@app.route('/i/<n>')
-def img(n):
-	return send_file('img/{}'.format(n), mimetype='image/png')
+#####
 
-def update_data(year):
+def edc_update_data(year):
 	soup = BeautifulSoup(rq.get('https://www.eastdunbarton.gov.uk/residents/schools-and-learning/school-holidays').content, 'html.parser')
 
 	sdata = [[[k.text.replace('\xa0', '').replace(' (Teachers)', '').replace('**', ' (May be subject to change)') for k in j.find_all('p')] for j in i.find_all('tr') if j.find_all('td') != []] for i in soup.find_all('table')]
@@ -135,14 +134,14 @@ def update_data(year):
 			pdates = [f"{i.split(' ')[0]} {int(i.split(' ')[1])}{dsuffix(int(i.split(' ')[1]))} {i.split(' ')[2]}" for i in pdates]
 			data['data'].append({'name': i[0], 'time': seutc, 'date': pdates})
 
-	with open('data.json', 'w') as f:
+	with open('edch/data.json', 'w') as f:
 		json.dump(data, f, indent=4)
 
-with open('data.json') as f:
+with open('edch/data.json') as f:
 	data = json.load(f)
 
-@app.route('/')
-def index():
+@app.route('/edch')
+def edch_index():
 	now = datetime.now(timezone.utc)
 	utc = now.timestamp()
 	if now.year != data['year']:
@@ -156,29 +155,28 @@ def index():
 	nht = f"Next holiday is: {next_holiday['name']}, {nht2}" if next_holiday is not None else 'No upcoming holidays.'
 	return f"{cur_holiday['name'] if cur_holiday is not None else 'No current holiday'}, {nht}"
 
-@app.route('/update/<key>')
-def update(key):
-  if key == os.environ['key']:
-	update_data(datetime.now(timezone.utc).year)
-	return 'Updated.'
-  return 'Wrong/No key.'
+@app.route('/edch/update/<key>')
+def edch_update(key):
+	if key == os.environ['dev']:
+		update_data(datetime.now(timezone.utc).year)
+		return 'Updated.'
+	return 'Wrong/No key.'
 
-app = Flask('RATESAPI')
-app.secret_key = os.environ['app']
+#####
 
-with open('data.json') as f:
-	x = json.load(f)
+with open('gbp/data.json') as f:
+	gbpdata = json.load(f)
 
-@app.route('/')
-def index():
-	return x
+@app.route('/gbp')
+def gbp_index():
+	return gbpdata
 
-@app.route('/update/<key>')
-def updateapi(key):
-	if key == os.environ['key']:
-		x = freecurrencyapi.Client(os.environ['api']).latest('GBP', 'AUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,EUR,GBP,HKD,HRK,HUF,IDR,ILS,INR,ISK,JPY,KRW,MXN,MYR,NOK,NZD,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR'.split(','))['data']
-		with open('data.json', 'w') as f:
-			json.dump(x, f)
+@app.route('/gbp/update/<key>')
+def gbp_updateapi(key):
+	if key == os.environ['dev']:
+		gbpdata = freecurrencyapi.Client(os.environ['api']).latest('GBP', 'AUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,EUR,GBP,HKD,HRK,HUF,IDR,ILS,INR,ISK,JPY,KRW,MXN,MYR,NOK,NZD,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR'.split(','))['data']
+		with open('gbp/data.json', 'w') as f:
+			json.dump(gbpdata, f)
 		return 'DONE!'
 	return 'INVALID KEY.'
 
